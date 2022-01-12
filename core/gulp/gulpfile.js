@@ -3,9 +3,14 @@ const concat = require("gulp-concat");
 const purgecss = require("gulp-purgecss");
 const imagemin = require("gulp-imagemin");
 const sass = require("gulp-sass")(require("sass"));
-var browserSync = require("browser-sync").create();
+const browserSync = require("browser-sync").create();
+const del = require("del");
 
 const { src, dest, watch, series } = require("gulp");
+
+function cleanTask() {
+  return del("../../core/static/core/css/app.min.css", { force: true });
+}
 
 function purgeTask() {
   return src("../../core/static/core/css/*.css")
@@ -22,8 +27,10 @@ function purgeTask() {
 function watchTask() {
   watch(
     ["../../**/templates/**/*.html", "../../**/static/**/*.js"],
-    series(purgeTask)
+    series(cleanTask, purgeTask)
   );
 }
 
-exports.default = series(purgeTask, watchTask);
+//exports.default = series(cleanTask, purgeTask, watchTask);
+
+exports.default = series(cleanTask, purgeTask);

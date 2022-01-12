@@ -1,3 +1,5 @@
+{% load theme_utils %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,20 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
-    <link rel="stylesheet" href="/static/core/css/app.min.css">
+    {% app_css %}
+
 </head>
 
 <body>
 
-
-    <h1 id="h1" class="heading">Welcome!</h1>
-
-
-
-
+    <h1 id="h1">Welcome!</h1>
 
     <p class="paragraph">How are ya today!</p>
-
 
     <script src="/static/core/js/app.js"></script>
 

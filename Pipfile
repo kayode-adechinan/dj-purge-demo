@@ -8,6 +8,8 @@ black = "*"
 
 [packages]
 django = "*"
+gunicorn = "*"
+whitenoise = {extras = ["brotli"], version = "*"}
 
 [requires]
 python_version = "3.9"
